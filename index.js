@@ -1,3 +1,6 @@
+const redux = require("redux");
+const createStore = redux.createStore;
+
 const Buy_Cake = "Buy_Cake";
 
 function buyCake() {
@@ -24,3 +27,17 @@ const reducer = (state = initialState, action) => {
       return state;
   }
 };
+
+// implementing redux store
+const store = createStore(reducer);
+console.log(store.getState());
+store.subscribe(() => console.log("State Updated: ", store.getState()));
+
+
+const intervalID = setInterval(() => {
+    store.dispatch(buyCake());
+    if(store.getState().noOfCakes < 5){
+        clearInterval(intervalID)
+    }
+  }, 1000)
+
