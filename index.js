@@ -74,8 +74,9 @@ const rootReducer = combineReducer({
   iceCream: iceCreamReducer,
 });
 const store = createStore(rootReducer);
-console.log(store.getState());
-store.subscribe(() => console.log("State Updated: ", store.getState()));
+// console.log(store.getState());
+const unSubscribe = store.subscribe(() => console.log("State Updated: ", store.getState()));
+unSubscribe();
 
 
 const intervalID = setInterval(() => {
