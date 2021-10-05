@@ -1,5 +1,6 @@
 const redux = require("redux");
 const createStore = redux.createStore;
+const combineReducer = redux.combineReducers;
 
 const Buy_Cake = "Buy_Cake";
 const Buy_IceCream = "Buy_IceCream";
@@ -27,7 +28,7 @@ const initialCakeState = {
 };
 
 const initialIceCreamState = {
-  noOfIceCreams: 10,
+  noOfIceCreams: 20,
 };
 
 // Reducers: Reducers are responsible for altering the state based on provided actions
@@ -68,14 +69,20 @@ const iceCreamReducer = (state = initialIceCreamState, action) => {
 };
 
 // implementing redux store
-const store = createStore(cakeReducer);
+const rootReducer = combineReducer({
+  cake: cakeReducer,
+  iceCream: iceCreamReducer,
+});
+const store = createStore(rootReducer);
 console.log(store.getState());
 store.subscribe(() => console.log("State Updated: ", store.getState()));
 
 
 const intervalID = setInterval(() => {
     store.dispatch(buyCake());
-    if(store.getState().noOfCakes < 5){
+    if(store.getState().cake.noOfCakes < 5){
+        store.dispatch(BuyIceCream());
+        store.dispatch(BuyIceCream());
         clearInterval(intervalID)
     }
   }, 1000)
