@@ -15,3 +15,5 @@ We can provide a second argument to `createStore()` to provide extended function
 e.g Redux Thunk, Logger etc  
 
 ## Async Actions
+We will use redux-thunk middleware for applying async actions.
+redux-thunk will allow us to create action creators that instead of returning actions would return a function, using the returned function we can create asynchronous tasks such as http request and other side effects.
