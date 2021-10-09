@@ -84,7 +84,6 @@ const store = createStore(rootReducer, applyMiddleware(logger));
 // console.log(store.getState());
 const unSubscribe = store.subscribe(() => {});
 
-
 const intervalID = setInterval(() => {
   store.dispatch(buyCake());
   if(store.getState().cake.noOfCakes < 5){

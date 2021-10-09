@@ -10,6 +10,8 @@
 ## Combine Multiple Reducers
 `redux.combineReducers()` : Redux provides a method for combining multiple reducers  into a single root reducer. 
 
-## Enhacer
+## Enhacer (Middlewares)
 We can provide a second argument to `createStore()` to provide extended functionality  like third party extension between dispatching and the moment it reaches the reducer.
 e.g Redux Thunk, Logger etc  
+
+## Async Actions
